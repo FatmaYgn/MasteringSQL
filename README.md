@@ -395,7 +395,7 @@ FULL JOIN rental
 ON customer.customer_id = rental.customer_id;
 ```
 
-## 39. UNION, INTERSECT & EXCEPT
+## UNION, INTERSECT & EXCEPT
 #### 1. Sort All first_name Values
 To sort all first_name values from both the actor and customer tables, you can use the following queries:
 ```sql
@@ -425,3 +425,40 @@ SELECT first_name
 FROM customer
 ORDER BY first_name;
 ```
+
+## Subquery, Any and All Operators
+
+#### 1. Find out how many films in the film table have a length greater than the average film length
+```sql
+SELECT COUNT(*) AS count_of_long_films
+FROM film
+WHERE length > (SELECT AVG(length) FROM film);
+```
+#### 2. Find out how many films in the film table have the highest rental_rate
+```sql
+SELECT COUNT(*) AS count_of_highest_rental_rate
+FROM film
+WHERE rental_rate = (SELECT MAX(rental_rate) FROM film);
+```
+#### 3. Retrieve the films from the film table that have the lowest rental_rate and the lowest replacement_cost
+```sql
+SELECT *
+FROM film
+WHERE rental_rate = (SELECT MIN(rental_rate) FROM film)
+   AND replacement_cost = (SELECT MIN(replacement_cost) FROM film);
+```
+
+#### 4. Retrieve the customers from the payment table who have made the most purchases
+```sql
+SELECT customer_id, COUNT(*) AS purchase_count
+FROM payment
+GROUP BY customer_id
+ORDER BY purchase_count DESC;
+LIMIT 10;  -- Change 10 to the desired number of top customers
+```
+
+
+
+
+
+
