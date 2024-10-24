@@ -371,7 +371,27 @@ INNER JOIN customer
 ON rental.customer_id = customer.customer_id;
 ```
 
+## 36. Write the LEFT JOIN query that allows us to see the city and country names from the city and country tables together.
+```sql
+SELECT city.city_name, country.country_name
+FROM city
+LEFT JOIN country
+ON city.country_id = country.country_id;
+```
 
+## 37. Write the RIGHT JOIN query to see the payment_id from the payment table along with first_name and last_name from the customer table together
+```sql
+SELECT payment.payment_id, customer.first_name, customer.last_name
+FROM customer
+RIGHT JOIN payment
+ON customer.customer_id = payment.customer_id;
+```
 
-
+## 38. Write the FULL JOIN query to see the rental_id from the rental table along with the first_name and last_name from the customer table together
+```sql
+SELECT rental.rental_id, customer.first_name, customer.last_name
+FROM customer
+FULL JOIN rental
+ON customer.customer_id = rental.customer_id;
+```
 
