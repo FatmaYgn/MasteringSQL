@@ -130,3 +130,36 @@ SELECT COUNT(*) AS count_of_cities
 FROM city
 WHERE city LIKE '%R' OR city LIKE '%r';
 ```
+
+## 18. Retrieve the top 5 longest films whose title ends with 'n'
+```sql
+SELECT *
+FROM film
+WHERE title LIKE '%n'
+ORDER BY length DESC
+LIMIT 5;
+```
+
+## 19. Retrieve the second 5 shortest films with title ending in 'n' and lengths of 6, 7, 8, 9, or 10
+```sql
+SELECT *
+FROM film
+WHERE title LIKE '%n'
+AND length IN (6, 7, 8, 9, 10)
+ORDER BY length ASC
+LIMIT 5 OFFSET 5;
+```
+
+## 20. Retrieve the top 4 customers with store_id 1, ordered by last_name in descending order
+```sql
+SELECT *
+FROM customer
+WHERE store_id = 1
+ORDER BY last_name DESC
+LIMIT 4;
+```
+
+
+
+
+
