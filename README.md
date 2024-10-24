@@ -217,8 +217,137 @@ ORDER BY city_count DESC
 LIMIT 1;
 ```
 
+## 29. Create a table named employee in the test database with the following column information: id (INTEGER), name (VARCHAR(50)), birthday (DATE), and email (VARCHAR(100))
+```sql
+CREATE TABLE employee (
+    id INTEGER PRIMARY KEY,
+    name VARCHAR(50) NOT NULL,
+    birthday DATE,
+    email VARCHAR(100) UNIQUE
+);
+```
 
+## 30. Add 50 records to the employee table using the Mockaroo service.
 
+To add 50 records to the employee table using the Mockaroo service, you can follow these steps:
+
+### Step 1: Generate Data with Mockaroo
+#### 1. Go to Mockaroo: Visit the Mockaroo website.
+#### 2. Define Your Schema:
+<ul>
+<li>id: Integer (set to start from 1 and increment by 1)</li>
+<li>name: Full Name (or First Name + Last Name)</li>
+<li>birthday: Date (you can set a range, e.g., between 1960-01-01 and 2000-12-31)</li>
+<li>email: Email (ensure it’s unique)</li>
+</ul>
+
+#### 3. Set the Number of Rows: Change the number of rows to 50
+
+#### 4. Download the Data: Click on the "Download Data" button to get the data in CSV format.
+
+### Step 2: Import Data into Your Database
+#### 1. Prepare Your Database Environment: Ensure you have access to your database where the employee table is located.
+#### 2. Use SQL to Import Data: If you have the CSV file ready, you can use a SQL command to import it. The command will depend on your database system (e.g., MySQL, PostgreSQL).
+
+Here’s a general example using MySQL:
+
+```sql
+LOAD DATA INFILE '/path/to/your/file.csv'
+INTO TABLE employee
+FIELDS TERMINATED BY ','
+ENCLOSED BY '"'
+LINES TERMINATED BY '\n'
+IGNORE 1 ROWS;
+```
+#### Important Notes:
+<ul>
+<li>File Path: Make sure to replace '/path/to/your/file.csv' with the actual path to your CSV file.</li>
+<li>Permissions: Ensure your database user has the necessary permissions to load data from a file.</li>
+<li>Format: The format of the CSV should match the structure of your employee table.</li>
+  </ul>
+By following these steps, you can successfully populate the employee table with 50 records using Mockaroo. If you need specific instructions for a certain database system or further assistance, let me know!
+
+## 31. Perform 5 UPDATE operations that will update other columns based on each of the columns.
+Here are five examples of UPDATE statements that you can use to update different columns in the employee table. Each example demonstrates updating one column while maintaining the integrity of the other columns.
+
+#### Example 1: Update Name
+This updates the name of the employee with id 1 to 'John Doe'.
+```sql
+UPDATE employee
+SET name = 'John Doe'
+WHERE id = 1;
+```
+
+#### Example 2: Update Birthday
+This updates the birthday of the employee with id 2 to May 15, 1990.
+```sql
+UPDATE employee
+SET birthday = '1990-05-15'
+WHERE id = 2;
+```
+
+#### Example 3: Update Email
+This updates the email of the employee with id 3 to 'jane.smith@example.com'.
+```sql
+UPDATE employee
+SET email = 'jane.smith@example.com'
+WHERE id = 3;
+```
+
+#### Example 4: Update Multiple Columns
+This updates the name and birthday of the employee with id 4 to 'Alice Johnson' and December 1, 1985, respectively.
+```sql
+UPDATE employee
+SET name = 'Alice Johnson', birthday = '1985-12-01'
+WHERE id = 4;
+```
+
+#### Example 5: Update with Conditional Logic
+This updates the email of all employees whose birthday is before January 1, 1990, to their name followed by '@example.com' in lowercase.
+```sql
+UPDATE employee
+SET email = CONCAT(LOWER(name), '@example.com')
+WHERE birthday < '1990-01-01';
+```
+
+## 32. 
+Here are five examples of DELETE statements that you can use to delete specific rows from the employee table based on different conditions:
+#### Example 1: Delete by ID
+This deletes the employee record with id 1.
+```sql
+DELETE FROM employee
+WHERE id = 1;
+```
+
+#### Example 2: Delete by Name
+This deletes the employee record where the name is 'John Doe'.
+```sql
+DELETE FROM employee
+WHERE name = 'John Doe';
+```
+
+#### Example 3: Delete by Birthday
+This deletes the employee record with a birthday of May 15, 1990.
+```sql
+DELETE FROM employee
+WHERE birthday = '1990-05-15';
+```
+
+#### Example 4: Delete by Email
+This deletes the employee record with the specified email.
+```sql
+DELETE FROM employee
+WHERE email = 'jane.smith@example.com';
+```
+
+#### Example 5: Delete with Conditional Logic
+This deletes all employee records whose birthday is before January 1, 1980.
+```sql
+DELETE FROM employee
+WHERE birthday < '1980-01-01';
+```
+
+## 33. 
 
 
 
