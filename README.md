@@ -12,8 +12,8 @@ FROM film;
 ```sql
 SELECT *
 FROM film
-WHERE length > 60
-AND length < 75;
+WHERE length
+BETWEEN 60 AND 75;
 ```
 
 ## 3. Retrieve all columns from the film table where rental_rate is 0.99 and replacement_cost is either 12.99 or 28.99
