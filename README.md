@@ -62,3 +62,71 @@ WHERE rental_rate IN (0.99, 2.99, 4.99)
 AND replacement_cost IN (12.99, 15.99, 28.99);
 ```
 
+## 9. Retrieve country names from the country table where the name starts with 'A' and ends with 'a'
+```sql
+SELECT country
+FROM country
+WHERE country LIKE 'A%a';
+```
+
+## 10. Retrieve country names from the country table that are at least 6 characters long and end with 'n'
+```sql
+SELECT country
+FROM country
+WHERE LENGTH(country) >= 6
+AND country LIKE '%n';
+```
+
+## 11. Retrieve film titles from the film table that contain at least 4 occurrences of the character 'T' (case insensitive)
+```sql
+SELECT title
+FROM film
+WHERE title LIKE '%T%' OR title LIKE '%t%'
+GROUP BY title
+HAVING (LENGTH(title) - LENGTH(REPLACE(UPPER(title), 'T', ''))) >= 4;
+```
+
+## 12. Retrieve all columns from the film table where the title starts with 'C', the length is greater than 90, and the rental_rate is 2.99
+```sql
+SELECT *
+FROM film
+WHERE title LIKE 'C%'
+AND length > 90
+AND rental_rate = 2.99;
+```
+
+## 13. Retrieve distinct values from the replacement_cost column in the film table
+```sql
+SELECT DISTINCT replacement_cost
+FROM film
+ORDER BY replacement_cost;
+```
+
+## 14. Count distinct values in the replacement_cost column of the film table 
+```sql
+SELECT COUNT(DISTINCT replacement_cost)
+AS distinct_replacement_cost_count
+FROM film;
+```
+
+## 15. Count the number of film titles that start with 'T' and have a rating of 'G'
+```sql
+SELECT COUNT(*) AS count_of_films
+FROM film
+WHERE title LIKE 'T%'
+AND rating = 'G';
+```
+
+## 16. Count the number of country names that are exactly 5 characters long
+```sql
+SELECT COUNT(*) AS count_of_countries
+FROM country
+WHERE LENGTH(country) = 5;
+```
+
+## 17. Count the number of city names that end with 'R' or 'r'
+```sql
+SELECT COUNT(*) AS count_of_cities
+FROM city
+WHERE city LIKE '%R' OR city LIKE '%r';
+```
