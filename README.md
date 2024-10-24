@@ -395,3 +395,33 @@ FULL JOIN rental
 ON customer.customer_id = rental.customer_id;
 ```
 
+## 39. UNION, INTERSECT & EXCEPT
+#### 1. Sort All first_name Values
+To sort all first_name values from both the actor and customer tables, you can use the following queries:
+```sql
+SELECT first_name FROM actor
+ORDER BY first_name;
+UNION
+SELECT first_name FROM customer
+ORDER BY first_name;
+```
+#### 2. Sort Common first_name Values
+To find and sort the intersecting first_name values present in both tables, use this query:
+```sql
+SELECT first_name
+FROM actor
+INTERSECT
+SELECT first_name
+FROM customer
+ORDER BY first_name;
+```
+#### 3. Sort first_name Values Present in the First Table but Not in the Second
+To retrieve and sort the first_name values that are present in the actor table but not in the customer table, use the following query:
+```sql
+SELECT first_name
+FROM actor
+EXCEPT
+SELECT first_name
+FROM customer
+ORDER BY first_name;
+```
