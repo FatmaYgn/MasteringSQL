@@ -186,4 +186,41 @@ FROM film
 WHERE length > 150;
 ```
 
+## 25. Group films by their rating values
+```sql
+SELECT rating, COUNT(*) AS film_count
+FROM film
+GROUP BY rating;
+```
+
+## 26. Retrieve replacement_cost values with more than 50 films and their corresponding counts
+```sql
+SELECT replacement_cost, COUNT(*) AS film_count
+FROM film
+GROUP BY replacement_cost
+HAVING COUNT(*) > 50;
+```
+
+## 27. Retrieve the customer counts for each store_id in the customer table
+```sql
+SELECT store_id, COUNT(*) AS customer_count
+FROM customer
+GROUP BY store_id;
+```
+
+## 28. Retrieve the country_id with the highest number of cities and the corresponding city count
+```sql
+SELECT country_id, COUNT(*) AS city_count
+FROM city
+GROUP BY country_id
+ORDER BY city_count DESC
+LIMIT 1;
+```
+
+
+
+
+
+
+
 
