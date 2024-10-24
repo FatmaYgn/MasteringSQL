@@ -457,8 +457,47 @@ ORDER BY purchase_count DESC;
 LIMIT 10;  -- Change 10 to the desired number of top customers
 ```
 
-
-
+## 39. Retrieve the four longest films from the film table that start with the character 'K' and have the lowest replacement_cost
+```sql
+SELECT *
+FROM film
+WHERE title LIKE 'K%'  -- Title starts with 'K'
+ORDER BY length DESC, replacement_cost ASC
+LIMIT 4;
+```
+## 40. Find out which rating category has the highest number of films in the film table
+```sql
+SELECT rating, COUNT(*) AS film_count
+FROM film
+GROUP BY rating
+ORDER BY film_count DESC
+LIMIT 1;
+```
+## 41. Find the name of the customer who has made the most purchases in the customer table 
+You typically join the customer table with the payment table (assuming the payment table contains the records of purchases)
+```sql
+SELECT c.first_name, c.last_name
+FROM customer c
+JOIN payment p ON c.customer_id = p.customer_id
+GROUP BY c.customer_id, c.first_name, c.last_name
+ORDER BY COUNT(p.payment_id) DESC
+LIMIT 1;
+```
+## 42. Retrieve the category names along with the count of films per category from the category table
+You typically need to join the category table with the film table
+```sql
+SELECT c.name AS category_name, COUNT(f.film_id) AS film_count
+FROM category c
+LEFT JOIN film f ON c.category_id = f.category_id
+GROUP BY c.category_id, c.name
+ORDER BY film_count DESC;
+```
+## 43. Find the number of films in the film table that contain at least four occurrences of the letter 'e' or 'E' in their title
+```sql
+SELECT COUNT(*) AS film_count
+FROM film
+WHERE LENGTH(title) - LENGTH(REPLACE(LOWER(title), 'e', '')) >= 4;
+```
 
 
 
