@@ -347,7 +347,29 @@ DELETE FROM employee
 WHERE birthday < '1980-01-01';
 ```
 
-## 33. 
+## 33. Write an INNER JOIN query to display the city names from the city table and country names from the country table together
+```sql
+SELECT city.name AS city_name, country.name AS country_name
+FROM city
+INNER JOIN country
+ON city.country_id = country.country_id;
+```
+
+## 34. Write an INNER JOIN query to display the payment_id from the payment table along with the first_name and last_name from the customer table
+```sql
+SELECT payment.payment_id, customer.first_name, customer.last_name
+FROM payment
+INNER JOIN customer
+ON payment.customer_id = customer.customer_id;
+```
+
+## 35. Write an INNER JOIN query to display the rental_id from the rental table along with the first_name and last_name from the customer table
+```sql
+SELECT rental.rental_id, customer.first_name, customer.last_name
+FROM rental
+INNER JOIN customer
+ON rental.customer_id = customer.customer_id;
+```
 
 
 
