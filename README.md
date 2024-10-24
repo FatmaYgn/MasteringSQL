@@ -159,7 +159,31 @@ ORDER BY last_name DESC
 LIMIT 4;
 ```
 
+## 21. Calculate the average value of the rental_rate column in the film table
+```sql
+SELECT AVG(rental_rate) AS average_rental_rate
+FROM film
+```
 
+## 22. Count the number of films whose title starts with 'C'
+```sql
+SELECT COUNT(*) AS count_of_films
+FROM film
+WHERE title LIKE 'C%';
+```
 
+## 23. Retrieve the length of the longest film with a rental_rate of 0.99
+```sql
+SELECT MAX(length) AS longest_film_length
+FROM film
+WHERE rental_rate = 0.99;
+```
+
+## 24. Count the distinct replacement_cost values for films longer than 150 minutes
+```sql
+SELECT COUNT(DISTINCT replacement_cost) AS distinct_replacement_cost_count
+FROM film
+WHERE length > 150;
+```
 
 
